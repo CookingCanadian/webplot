@@ -38,10 +38,23 @@ function App() {
         <div className="content-holder">
           <div className="content-panel">
             <image className="gym-icon"></image>
+            <p className="content-title">Gym</p>
           </div>
-          <div className="content-panel"></div>
-          <div className="content-panel"></div>
-          <div className="content-panel"></div>
+
+          <div className="content-panel">
+            <image className="office-icon"></image>
+            <p className="content-title">Office</p>
+          </div>
+            
+          <div className="content-panel">
+            <image className="school-icon"></image>
+            <p className="content-title">School</p>
+          </div>
+
+          <div className="content-panel">
+            <image className="hotel-icon"></image>
+            <p className="content-title">Hotel</p>
+          </div>
         </div>
       </div>
     </div>
