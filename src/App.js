@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css"; // Import the styles
+import "./App.css"; 
 
 function App() {
   const imageUrl = "https://reverttechnologies.com/cdn/shop/files/b2.png?v=1730099475";
@@ -58,21 +58,24 @@ function App() {
           />
         ))}
       </div>
+
       <div className="background-overlay">
-        <p className="segment-title">Select Your Segment</p>
-        <div className="content-holder">
-          {panels.map((panel) => (
-            <button
-              key={panel.id}
-              className={`content-panel ${
-                selectedPanel === panel.id ? "selected" : ""
-              }`}
-              onClick={() => handleSelect(panel.id)}
-            >
-              <div className={panel.iconClass}></div>
-              <p className="content-title">{panel.title}</p>
-            </button>
-          ))}
+        <div className="screen1">
+          <p className="segment-title">Select Your Segment</p>
+          <div className="content-holder">
+            {panels.map((panel) => (
+              <button
+                key={panel.id}
+                className={`content-panel ${
+                  selectedPanel === panel.id ? "selected" : ""
+                }`}
+                onClick={() => handleSelect(panel.id)}
+              >
+                <div className={panel.iconClass}></div>
+                <p className="content-title">{panel.title}</p>
+              </button>
+            ))}
+          </div>  
         </div>
         
         <div className="progress-holder">
