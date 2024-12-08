@@ -60,7 +60,7 @@ function App() {
       </div>
 
       <div className="background-overlay">
-        <div className="screen1">
+        <div className={`screen1 page-${currentPage}`}>
           <p className="segment-title">Select Your Segment</p>
           <div className="content-holder">
             {panels.map((panel) => (
