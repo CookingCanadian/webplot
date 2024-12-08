@@ -54,13 +54,13 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
-/* .gym-icon {
-  src: "/images/gym_icon.png";
+.gym-icon {
+  src: "/assets/gym_icon.png";
   background-size: cover;
   background-position: center;
   width: 100px;
   height: 100px;
-} */
+}
  
 @keyframes scrollBanner {
   from {

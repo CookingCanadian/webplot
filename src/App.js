@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Image } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css"; // Import the styles
 
 function App() {
@@ -36,6 +36,9 @@ function App() {
       <div className="background-overlay">
         <p className="segment-title">Select Your Segment</p>
         <div className="content-holder">
+          <div className="content-panel">
+            <image className="gym-icon"></image>
+          </div>
           <div className="content-panel"></div>
           <div className="content-panel"></div>
           <div className="content-panel"></div>
