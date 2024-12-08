@@ -25,6 +25,7 @@
   justify-content: flex-start; 
   align-items: center; 
   padding: 20px; 
+  flex-wrap: wrap;
 }
 
 .segment-title {
@@ -47,18 +48,26 @@
 }
 
 .content-panel {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 80%;
-  width: 80%; 
+  width: 80%;
   z-index: 3;
   display: flex;
   border-radius: 20px;
-  border: 3px solid #EDEDED;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  border: 3px solid #ededed;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   justify-content: flex-start;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
+
+.content-panel.selected {
+  border-color: #E50914; 
+}
+
 
 .content-title {
   font-size: 24px;
@@ -110,7 +119,7 @@
 
 .hotel-icon {
   background-image: url(./assets/hotel_icon.png);
-  background-size: 80%;
+  background-size: 90%;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #f3f3f3;
@@ -121,7 +130,76 @@
   top: 10%;
 } 
 
- 
+.progress-holder {
+  background-color: transparent;
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.circle {
+  height: 12px;
+  width: 12px;
+  border: 2px solid #808080;
+  border-radius: 50%; 
+  background-color: white;
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.circle.active {
+  background-color: #E50914; 
+  border-color: #E50914;
+}
+
+.line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #808080;
+  margin: 0 8px; 
+}
+
+.progress-button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  width: 10%;
+  background-color: #808080;
+  color: white;
+  cursor: pointer;
+}
+
+.progress-button.active {
+  background-color: #e50914;
+}
+
+.progress-button:disabled {
+  opacity: 0.5;
+}
+
+.circle {
+  height: 12px;
+  width: 12px;
+  border: 2px solid #808080;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.line {
+  flex-grow: 1;
+  height: 2px;
+  background-color: #808080;
+}
+
 @keyframes scrollBanner {
   from {
     transform: translateX(0);
