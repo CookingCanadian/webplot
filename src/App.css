@@ -1,0 +1,72 @@
+.app-container {
+    background-color: #111;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+.banner-container {
+  display: flex;
+  animation: scrollBanner 60s linear infinite;
+}
+  
+.background-overlay {
+  background-color: #EDEDED;
+  height: 65vh;
+  width: 60%;
+  z-index: 2;
+  position: absolute;
+  left: 20%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column; 
+  justify-content: flex-start; 
+  align-items: center; 
+  padding: 20px; 
+}
+
+.segment-title {
+  font-size: 40px;
+  font-weight: 600;
+  font-family: 'IBM Plex Sans';
+  color: #262626;
+  margin-bottom: 30px; 
+}
+
+.content-holder {
+  background-color: transparent;
+  height: 60%;
+  width: 90%; 
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.content-panel {
+  background-color: #FFFFFF;
+  height: 100%;
+  width: 20%; 
+  z-index: 3;
+  display: flex;
+  border-radius: 20px;
+  border: 3px solid #EDEDED;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* .gym-icon {
+  src: "/images/gym_icon.png";
+  background-size: cover;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+} */
+ 
+@keyframes scrollBanner {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-66.67%);
+  }
+}
