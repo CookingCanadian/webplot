@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css"; 
-import "./Data.js"
+import sampleData from "./Data.js"
 
 function App() {
   const imageUrl = "https://reverttechnologies.com/cdn/shop/files/b2.png?v=1730099475";
@@ -80,7 +80,15 @@ function App() {
         </div>
         
         <div className={`screen2 page-${currentPage}`}>
-          <p>hello there</p>
+          <p className="segment-title">Select Quantity</p>
+          <div className="item-holder">
+            {Object.entries(sampleData[selectedPanel]).map(([key]) => (
+              <div key={key} className="quantity-item">
+                <p className="quantity-title">{key}</p>
+                <div className="quantity-input"></div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="progress-holder">
