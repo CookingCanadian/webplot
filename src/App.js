@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css"; 
+import "./Data.js"
 
 function App() {
   const imageUrl = "https://reverttechnologies.com/cdn/shop/files/b2.png?v=1730099475";
@@ -78,6 +79,10 @@ function App() {
           </div>  
         </div>
         
+        <div className={`screen2 page-${currentPage}`}>
+          <p>hello there</p>
+        </div>
+
         <div className="progress-holder">
           <button
             className="progress-button back"
@@ -88,14 +93,17 @@ function App() {
           </button>
 
           <div className="progress-indicator">
-            {[1, 2, 3].map((page) => (
+            {[1, 2, 3].map((page, index) => (
               <React.Fragment key={page}>
-                <span
-                  className={`circle ${currentPage >= page ? "active" : ""}`}
-                ></span>
+                <span className={`circle ${currentPage >= page ? "active" : ""}`}></span>
                 {page < 3 && <span className="line"></span>}
               </React.Fragment>
             ))}
+            <div className="label-holder">
+              <span className="label">Segment</span>
+              <span className="label">Quantity</span>
+              <span className="label">Location</span>
+            </div>
           </div>
 
           <button
