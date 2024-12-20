@@ -9,6 +9,8 @@ function App() {
   const [selectedPanel, setSelectedPanel] = useState(null);
   const [currentPage, setCurrentPage] = useState(1); // Track the current page
   const [progressVisible, setProgressVisible] = useState(true); // Track progress bar visibility
+  const [totalCost, setTotalCost] = useState(0);
+  const [totalPlug, setTotalPlug] = useState(0);
 
   useEffect(() => {
     const img = new Image();
@@ -72,74 +74,51 @@ function App() {
         if (selectedPanel==="gym") {
          totalCost /= 2
         } 
-  
+        
         totalPlugs += plugsForItem;
-  
-        console.log(`Plugs required for ${key}: ${plugsForItem}`);
       });
-  
-      console.log(`Gross Annual Savings for ${selectedPanel}: $${totalCost*0.18}`);
-      console.log(`Total number of plugs required: ${totalPlugs}`);
+      setTotalCost(totalCost)
+      setTotalPlug(totalPlugs)
     }
   };
   
 
   const [quantities, setQuantities] = useState(() =>
     Object.keys(sampleData[selectedPanel] || {}).reduce((acc, key) => {
-      acc[key] = 0; // Default to 0 for all items
+      acc[key] = 0;
       return acc;
     }, {})
   );
-
+  
   const [inputErrors, setInputErrors] = useState(() =>
     Object.keys(sampleData[selectedPanel] || {}).reduce((acc, key) => {
-      acc[key] = false; // Default to no errors
+      acc[key] = false; 
       return acc;
     }, {})
   );
-
+  
   const handleInputChange = (e, key) => {
-    const inputDiv = e.target;
-    const value = inputDiv.innerText.replace(/\D/g, ""); 
-
+    const value = e.target.value.replace(/\D/g, ""); // Allow only digits
+  
     if (/^\d*$/.test(value)) {
       setQuantities((prev) => ({
         ...prev,
         [key]: value === "" ? 0 : Number(value),
       }));
-
+  
       setInputErrors((prev) => ({
         ...prev,
         [key]: false, 
       }));
     }
-
-    setTimeout(() => {
-      const selection = window.getSelection();
-      const range = document.createRange();
-      range.selectNodeContents(inputDiv);
-      range.collapse(false); 
-      selection.removeAllRanges();
-      selection.addRange(range);
-    }, 0);
   };
-
-  const handleInputBlur = (e, key) => {
-    const inputDiv = e.target;
-    const value = inputDiv.innerText.trim();
-
-    if (!/^\d+$/.test(value) || Number(value) < 0) {
-      setQuantities((prev) => ({
-        ...prev,
-        [key]: 0,
-      }));
-
+  
+  const handleInputBlur = (key) => {
+    if (quantities[key] === "" || isNaN(quantities[key])) {
       setInputErrors((prev) => ({
         ...prev,
-        [key]: true, 
+        [key]: true,
       }));
-
-      inputDiv.innerText = "0"; 
     }
   };
 
@@ -165,7 +144,7 @@ function App() {
 
       <div className="background-overlay">
       <div className={`screen1 page-${currentPage}`}>
-        <p className="segment-title">Select Your Segment</p>
+        <p className="segment-title">Select Segment</p>
         <div className="content-holder">
           {panels.map((panel) => (
             <button
@@ -189,17 +168,15 @@ function App() {
             Object.entries(sampleData[selectedPanel]).map(([key]) => (
               <div key={key} className="quantity-item">
                 <p className="quantity-title">{key}</p>
-                <div
+                <input
+                  type="text"
                   className={`quantity-input ${
                     inputErrors[key] ? "input-error" : ""
                   }`}
-                  contentEditable
-                  suppressContentEditableWarning
-                  onBlur={(e) => handleInputBlur(e, key)}
-                  onInput={(e) => handleInputChange(e, key)}
-                >
-                  {quantities[key] !== undefined ? quantities[key] : "0"}
-                </div>
+                  value={quantities[key] !== undefined ? quantities[key] : "0"}
+                  onChange={(e) => handleInputChange(e, key)}
+                  onBlur={() => handleInputBlur(key)}
+                />
               </div>
             ))
           ) : (
@@ -210,15 +187,22 @@ function App() {
 
       <div className={`screen3 page-${currentPage}`}>
         <p className="segment-title">Facility Location</p>
-        <div className="map-holder">
-
-        </div>
+        <input className="location-input" placeholder="123 Energy Savings Ave, Brunswick, Maine"></input>
       </div>
 
       <div className={`screen4 page-${currentPage}`}>
         <p className="segment-title">Estimated Savings</p>
         <div className="results-holder">
-          
+          <div className="savings">
+            <p className="savings-title">Estimated Gross Annual Savings</p>
+            <p className="savings-body">${totalCost.toFixed(2)*0.18} using {totalPlug} plugs</p>
+          </div>
+          <div className="savings-content">
+            <div className="savings-panel"></div>
+            <div className="savings-panel">
+              <p className="savings-title">Plug in, start saving.</p>
+            </div>
+          </div>         
         </div>
       </div>
 
