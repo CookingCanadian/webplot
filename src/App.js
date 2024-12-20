@@ -198,9 +198,11 @@ function App() {
             <p className="savings-body">${totalCost.toFixed(2)*0.18} using {totalPlug} plugs</p>
           </div>
           <div className="savings-content">
-            <div className="savings-panel"></div>
             <div className="savings-panel">
-              <p className="savings-title">Plug in, start saving.</p>
+              <p className="savings-title">equation goes here</p>
+            </div>
+            <div className="savings-panel">
+              <p className="savings-title">Plug in, start saving. & more calls to actions here</p>
             </div>
           </div>         
         </div>
