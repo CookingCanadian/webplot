@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/webplot/static/css/main.aa9765e8.css",
+    "main.js": "/webplot/static/js/main.6213c4bf.js",
+    "static/js/453.0598c9ef.chunk.js": "/webplot/static/js/453.0598c9ef.chunk.js",
+    "static/media/school_icon.png": "/webplot/static/media/school_icon.8b63261c53e559587300.png",
+    "static/media/gym_icon.png": "/webplot/static/media/gym_icon.fc743261fe88499a6c2a.png",
+    "index.html": "/webplot/index.html",
+    "main.aa9765e8.css.map": "/webplot/static/css/main.aa9765e8.css.map",
+    "main.6213c4bf.js.map": "/webplot/static/js/main.6213c4bf.js.map",
+    "453.0598c9ef.chunk.js.map": "/webplot/static/js/453.0598c9ef.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aa9765e8.css",
+    "static/js/main.6213c4bf.js"
+  ]
+}
